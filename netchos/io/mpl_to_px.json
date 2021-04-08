@@ -1,0 +1,10 @@
+{
+    "go.heatmap": {
+        "cmap": "colorscale",
+        "vmin": "zmin",
+        "vmax": "zmax"
+    },
+    "line": {
+        "lw": "width"
+    }
+}

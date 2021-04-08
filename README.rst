@@ -2,12 +2,12 @@
 NetCHOS
 =======
 
-NetCHOS = **Net**work, **C**onnectivity and **H**ierarchically **O**rganized **S**tructures
+NetCHOS = Network, Connectivity and Hierarchically Organized Structures
 
 Description
 -----------
 
-`NetChos <https://brainets.github.io/netchos/>`_ is a Python toolbox dedicated to network plotting, potentially with interactions, using standard plotting libraries (matplotlib, seaborn or plotly).
+`NetCHOS <https://brainets.github.io/netchos/>`_ is a Python toolbox dedicated to network plotting, potentially with interactions, using standard plotting libraries (matplotlib, seaborn or plotly).
 
 Documentation
 -------------
