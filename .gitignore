@@ -119,11 +119,27 @@ venv.bak/
 
 # mkdocs documentation
 /site
+/generated
 
 # mypy
 .mypy_cache/
-.dmypy.json
-dmypy.json
 
-# Pyre type checker
-.pyre/
+# pycharm, vscode etc.
+.idea/
+.vscode/
+
+# files
+*.xlsx
+*.zip
+*.pdf
+*.prof
+
+/art
+docs/source/generated/
+docs/source/auto_examples/
+*.nc
+*.fuse*
+
+node_modules/
+package.json
+yarn.lock
