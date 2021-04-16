@@ -6,7 +6,10 @@ Network, Connectivity and Hierarchically Organized Structures
 """
 import logging
 
-from netchos import io
+from netchos import io, utils  # noqa
+from netchos.heatmap import heatmap  # noqa
+from netchos.network import network  # noqa
+from netchos.circular import circular  # noqa
 
 __version__ = "0.0.0"
 

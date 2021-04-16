@@ -21,7 +21,7 @@ def mpl_to_px_inputs(inputs, plt_types=None):
         Dictionary of converted inputs
     """
     # load reference table
-    file = op.join(op.dirname(__file__), "mpl_to_px.json")
+    file = op.join(op.dirname(__file__), "io_mpl_to_px.json")
     with open(file, 'r') as f:
         table = json.load(f)
 

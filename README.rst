@@ -12,7 +12,7 @@ Description
 Documentation
 -------------
 
-Frites documentation is available online at https://brainets.github.io/netchos/
+NetCHOS documentation is available online at https://brainets.github.io/netchos/
 
 Installation
 ------------

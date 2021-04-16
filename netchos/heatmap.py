@@ -5,20 +5,20 @@ from netchos.io import io_to_df, mpl_to_px_inputs
 from netchos.utils import categorize
 
 
-def heatmap(x, catline_x=None, catline_y=None, catline=None, backend='mpl',
-            fig=None, **kwargs):
+def heatmap(conn, catline_x=None, catline_y=None, catline=None,
+            backend='plotly', kw_trace={}, fig=None, **kwargs):
     """Heatmap plot.
 
     Parameters
     ----------
-    x : array_like or DataFrame or DataArray
-        2D Connectivity matrix of shape (n_rows, n_cols). If x is a DataFrame
-        or a DataArray, the indexes and columns are used for the x and y tick
-        labels
+    conn : array_like or DataFrame or DataArray
+        2D Connectivity matrix of shape (n_rows, n_cols). If conn is a
+        DataFrame or a DataArray, the indexes and columns are used for the conn
+        and y tick labels
     catline_x, catline_y : dict or None
-        Dictionary in order to plot categorical lines along the x and y axis.
-        The keys should correspond to the index or column elements and the
-        values to the category.
+        Dictionary in order to plot categorical lines along the conn and y
+        axis. The keys should correspond to the index or column elements and
+        the values to the category.
     catline : dict or None
         Additional arguments when plotting the line
         (e.g dict(color='red', lw=2))
@@ -46,9 +46,9 @@ def heatmap(x, catline_x=None, catline_y=None, catline=None, backend='mpl',
         catline = {}
     catline['color'] = catline.get('color', 'white')
 
-    # x input conversion
-    x = io_to_df(x, xr_pivot=True)
-    index, columns = x.index, x.columns
+    # conn input conversion
+    conn = io_to_df(conn, xr_pivot=True)
+    index, columns = conn.index, conn.columns
 
     if backend == 'mpl':  # -------------------------------- Matplotlib backend
         import seaborn as sns
@@ -58,7 +58,7 @@ def heatmap(x, catline_x=None, catline_y=None, catline=None, backend='mpl',
         kwargs['xticklabels'] = kwargs.get('xticklabels', True)
         kwargs['yticklabels'] = kwargs.get('yticklabels', True)
         # main heatmap
-        ax = sns.heatmap(x, **kwargs)
+        ax = sns.heatmap(conn, **kwargs)
         # categorical lines
         if isinstance(catline_x, dict):
             for k in categorize(columns, catline_x):
@@ -73,11 +73,11 @@ def heatmap(x, catline_x=None, catline_y=None, catline=None, backend='mpl',
         # main heatmap
         kwargs = mpl_to_px_inputs(kwargs, "go.heatmap")
         catline = mpl_to_px_inputs(catline, "line")
-        trace = go.Heatmap(z=x, x=x.columns, y=x.index, **kwargs)
-        fig.add_trace(trace)
+        trace = go.Heatmap(z=conn, x=conn.columns, y=conn.index, **kwargs)
+        fig.add_trace(trace, **kw_trace)
         fig.update_yaxes(tickmode='linear', autorange='reversed')
         fig.update_xaxes(tickmode='linear')
-        fig.update_layout(width=900, height=800)
+        fig.update_layout(width=900, height=850)
 
         # categorical lines
         if isinstance(catline_x, dict):

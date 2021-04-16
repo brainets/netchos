@@ -2,7 +2,7 @@
 import numpy as np
 
 def categorize(x, cat):
-    """find categories bounds in a vector 
+    """Find categories bounds in a vector 
 
     Parameters
     ----------
@@ -14,7 +14,7 @@ def categorize(x, cat):
     Returns
     -------
     bounds : array_like
-        Bounds when the category change
+        Bounds where the category change
     """
     val = [cat[k] for k in x]
     _, u_int = np.unique(val, return_inverse=True)
