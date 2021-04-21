@@ -12,9 +12,11 @@ Welcome to NetCHOS's documentation!
 
 
 
-Indices and tables
-==================
+Content of the website
+======================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+   :maxdepth: 1
+
+   auto_examples/index
+   api
