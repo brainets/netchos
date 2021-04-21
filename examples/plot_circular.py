@@ -26,8 +26,12 @@ pio.templates.default = 'plotly_white'
 
 # load the connectivity 2D matrix
 ufc = pd.read_excel('ufc.xlsx', index_col=0)
+print(ufc)
+
 # load a table that contains informations about the nodes
 ma = pd.read_excel('ma.xlsx')
+print(ma)
+
 # computes nodes' degree
 ma['degree'] = (~np.isnan(ufc.values)).sum(0)
 # compute node's strength
