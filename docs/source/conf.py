@@ -127,12 +127,11 @@ sphinx_gallery_conf = {
         'numpy': 'http://docs.scipy.org/doc/numpy',
         'scipy': 'http://docs.scipy.org/doc/scipy/reference',
         'pandas': 'https://pandas.pydata.org/pandas-docs/stable',
-        'statsmodels': 'http://www.statsmodels.org/stable/',
     },
     'gallery_dirs': 'auto_examples',
     'backreferences_dir': 'generated',
     'filename_pattern': '/plot_|sim_',
-    'default_thumb_file': 'source/_static/netchos.png',
+    # 'default_thumb_file': 'source/_static/netchos.png',
 }
 
 numpydoc_show_class_members = False
@@ -168,12 +167,12 @@ htmlhelp_basename = 'netchosdoc'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/netchos_128x128.png'
+# html_logo = '_static/netchos_128x128.png'
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or
 # 32x32 pixels large.
-html_favicon = '_static/favicon.ico'
+# html_favicon = '_static/favicon.ico'
 
 html_show_sourcelink = False
 
