@@ -48,7 +48,6 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.autosummary',
     'sphinx_gallery.gen_gallery',
-    'sphinxcontrib.bibtex',
     "sphinx.ext.extlinks",
     'numpydoc'
 ]
