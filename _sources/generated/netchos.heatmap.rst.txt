@@ -1,0 +1,6 @@
+﻿netchos.heatmap
+===============
+
+.. currentmodule:: netchos
+
+.. autofunction:: heatmap

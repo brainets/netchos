@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>netchos.circular &#8212; NetCHOS 0.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          NetCHOS</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../api.html">API</a></li>
+                <li><a href="../auto_examples/index.html">Examples</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">netchos.circular</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="netchos-circular">
+<h1>netchos.circular<a class="headerlink" href="#netchos-circular" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="netchos.circular">
+<code class="sig-prename descclassname"><span class="pre">netchos.</span></code><code class="sig-name descname"><span class="pre">circular</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_size_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_size_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plasma'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_text_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes_text_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_width_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_width_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_opacity_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_opacity_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges_cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plasma'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cbar_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Edges'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kw_trace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kw_cbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/netchos/circular.html#circular"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#netchos.circular" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network plotting within a circular layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>conn</strong><span class="classifier">array_like or DataFrame or DataArray</span></dt><dd><p>2D Connectivity matrix of shape (n_rows, n_cols). If conn is a
+DataFrame or a DataArray, the indexes and columns are used for the conn
+and y tick labels</p>
+</dd>
+<dt><strong>nodes_data</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame that can contains nodes informations (e.g the name of the
+nodes, the x, y and z coordinates, values assign to the nodes etc.)</p>
+</dd>
+<dt><strong>categories</strong><span class="classifier">dict, str | None</span></dt><dd><p>Nodes categories. If a dict is passed, the keys should corresponds
+to the name of the nodes and the values to the category name.
+Alternatively, if <cite>nodes_data</cite> is provided, a string referring to a
+column name can be provided instead</p>
+</dd>
+<dt><strong>nodes_name</strong><span class="classifier">list, array_like, str | None</span></dt><dd><p>List of names of the nodes. Alternatively, if <cite>nodes_data</cite> is provided,
+a string referring to a column name can be provided instead</p>
+</dd>
+<dt><strong>nodes_color, nodes_size</strong><span class="classifier">list, array_like, str | None</span></dt><dd><p>List of values assign to each node in order to modulate respectively
+the color and the size of the nodes. If None, the degree of each node
+is going to be used instead. Alternatively, if <cite>nodes_data</cite> is
+provided, a string referring to a column name can be provided instead</p>
+</dd>
+<dt><strong>nodes_size_min, nodes_size_max</strong><span class="classifier">float | 1, 30</span></dt><dd><p>Respectively, the minimum and maximum size to use for the markers</p>
+</dd>
+<dt><strong>nodes_cmap</strong><span class="classifier">str | ‘plasma’</span></dt><dd><p>Colormap to use in order to infer the color of each node</p>
+</dd>
+<dt><strong>nodes_text_offset</strong><span class="classifier">float | 1.</span></dt><dd><p>Floating point indicating the offset to apply to the name of each node</p>
+</dd>
+<dt><strong>nodes_text_size</strong><span class="classifier">float | 12</span></dt><dd><p>Font size for the nodes names</p>
+</dd>
+<dt><strong>edges_min, edges_max</strong><span class="classifier">float | None</span></dt><dd><p>Respectively the minimum and maximum to use for clipping edges values</p>
+</dd>
+<dt><strong>edges_width_min, edges_width_max</strong><span class="classifier">float | .5, .8</span></dt><dd><p>Respectively the minimum and maximum width to use fot the edges</p>
+</dd>
+<dt><strong>edges_opacity_min, edges_opacity_max</strong><span class="classifier">float | 0.1, 1.</span></dt><dd><p>Respectively the minimum and maximum opacity for edges</p>
+</dd>
+<dt><strong>edges_cmap</strong><span class="classifier">str | ‘plasma’</span></dt><dd><p>Colormap to use to infer the color of each edge</p>
+</dd>
+<dt><strong>cbar</strong><span class="classifier">bool | True</span></dt><dd><p>Add a colorbar to the plot.</p>
+</dd>
+<dt><strong>cbar_title</strong><span class="classifier">str | ‘Edges</span></dt><dd><p>Default colorbar title</p>
+</dd>
+<dt><strong>directed</strong><span class="classifier">bool | False</span></dt><dd><p>Specify if the graph is undirected (False) or directed (True)</p>
+</dd>
+<dt><strong>angle_start</strong><span class="classifier">float | 90</span></dt><dd><p>The angle (in degree) at which to start setting nodes names</p>
+</dd>
+<dt><strong>angle_range</strong><span class="classifier">float | 360</span></dt><dd><p>Angle range coverered (in degree). For example, if 180 is given, half
+of the circle is going to be displayed</p>
+</dd>
+<dt><strong>fig</strong><span class="classifier">go.Figure | None</span></dt><dd><p>plotly.graph_objects.Figure object</p>
+</dd>
+<dt><strong>kw_trace</strong><span class="classifier">dict | {}</span></dt><dd><p>Additional arguments to pass to the
+plotly.graph_objects.Figure.add_trace method</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">go.Figure | None</span></dt><dd><p>A plotly.graph_objects.Figure object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright Last updated on 2021-04-21.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+﻿netchos.network
+===============
+
+.. currentmodule:: netchos
+
+.. autofunction:: network
