@@ -4,14 +4,15 @@ import numpy as np
 
 from collections import OrderedDict
 
-from .misc import normalize
+from .misc import normalize, norm_range
 
 def prepare_to_plot(
         conn, nodes_name=None, nodes_size=None, nodes_size_min=1,
         nodes_size_max=10, nodes_color=None, nodes_x=None, nodes_y=None,
         nodes_z=None, edges_min=None, edges_max=None, edges_width_min=.5,
-        edges_width_max=8, edges_opacity_min=.1, edges_cmap='plasma',
-        edges_sorted=True, edges_rm_missing=True, directed=False):
+        edges_width_max=8, edges_opacity_min=.1, edges_opacity_max=1.,
+        edges_cmap='plasma', edges_sorted=True, edges_rm_missing=True,
+        directed=False, backend='plotly'):
     """Function to extract variables that are then used for plotting graph.
 
     Parameters
@@ -34,8 +35,8 @@ def prepare_to_plot(
         Respectively the minimum and maximum to use for clipping edges values
     edges_width_min, edges_width_max : float | .5, .8
         Respectively the minimum and maximum width to use fot the edges
-    edges_opacity_min : float | .1
-        Minimum opacity to use for the edges
+    edges_opacity_min, edges_opacity_max : float | .1, 1.
+        Respectively the minimum and maximum opacity to use for the edges
     edges_sorted : bool | True
         Specify whether the edges should be sorted according to their values
     edges_rm_missing : bool | True
@@ -50,9 +51,6 @@ def prepare_to_plot(
     df_edges : pd.DataFrame
         Pandas DataFrame containing relevant informations about edges
     """
-    from matplotlib.colors import to_hex
-    import matplotlib.pyplot as plt
-    
     # -------------------------------------------------------------------------
     #                             NODES DATAFRAME
     # -------------------------------------------------------------------------
@@ -110,7 +108,7 @@ def prepare_to_plot(
         raise NotImplementedError("Not implemented for directed graph")
     else:
         tri_s, tri_t = np.triu_indices_from(conn, k=1)
-    
+
     # if required, drop edges with nan values
     if edges_rm_missing:
         _is_nan = ~np.isnan(np.array(conn)[tri_s, tri_t])
@@ -125,28 +123,34 @@ def prepare_to_plot(
     # edges values
     edges_val = np.array(conn)[tri_s, tri_t]
     df_edges['values'] = edges_val
+    df_edges['colorbar'] = normalize(
+        edges_val, to_min=edges_min, to_max=edges_max)
 
     # plotting edges values
-    if any([isinstance(k, (int, float)) for k in (edges_min, edges_max)]):
-        edges_val = np.clip(edges_val, edges_min, edges_max)
-    values = normalize(edges_val, to_min=0., to_max=1.)
+    values = norm_range(edges_val, vmin=edges_min, vmax=edges_max)
     df_edges['values_plt'] = values
     df_edges['order'] = np.argsort(values)
 
     # plotting edges width
-    df_edges['width'] = normalize(values, to_min=edges_width_min,
-                                  to_max=edges_width_max)
+    df_edges['width'] = (values * (edges_width_max - edges_width_min)) + \
+        edges_width_min
 
     # plotting edge opacity
-    if isinstance(edges_opacity_min, (int, float)) and (edges_opacity_min < 1):
-        opacity = normalize(values, to_min=edges_opacity_min, to_max=1.)
-    else:
-        opacity = np.ones_like(values)
-    df_edges['opacity'] = opacity
+    df_edges['opacity'] = (values * (edges_opacity_max - \
+        edges_opacity_min)) + edges_opacity_min
 
     # plotting color
-    colormap = plt.get_cmap(edges_cmap)
-    df_edges['color'] = [to_hex(colormap(k)) for k in df_edges['values_plt']]
+    if backend == 'mpl':
+        from matplotlib.colors import to_hex
+        import matplotlib.pyplot as plt
+
+        cmap = plt.get_cmap(edges_cmap)
+        df_edges['color'] = [to_hex(cmap(k)) for k in df_edges['values_plt']]
+    elif backend == 'plotly':
+        from netchos.utils.colors import plotly_map_color
+
+        df_edges['color'] = plotly_map_color(
+            df_edges['values'], edges_cmap, vmin=edges_min, vmax=edges_max)
 
     # edges coordinates
     df_edges['x_s'], df_edges['x_t'] = nodes_x[tri_s], nodes_x[tri_t]

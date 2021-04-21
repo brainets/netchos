@@ -170,7 +170,9 @@ def network(
         )
         fig.add_trace(cbar_trace)
     
-    axis = dict(showgrid=False, visible=False)
-    fig.update_layout(width=900, height=800, xaxis=axis, yaxis=axis)
+    fig.update_xaxes(showgrid=False, visible=False, **kw_trace)
+    fig.update_yaxes(showgrid=False, visible=False, **kw_trace)
+    if not len(kw_trace):
+        fig.update_layout(width=900, height=800)
 
     return fig

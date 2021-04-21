@@ -12,7 +12,6 @@ def normalize(x, to_min=0., to_max=1.):
         The array to normalize
     to_min : int/float | 0.
         Minimum of returned array
-
     to_max : int/float | 1.
         Maximum of returned array
 
@@ -21,6 +20,8 @@ def normalize(x, to_min=0., to_max=1.):
     xn : array_like
         The normalized array
     """
+    if to_min is None: to_min = np.nanmin(x)  # noqa
+    if to_max is None: to_max = np.nanmax(x)  # noqa
     if x.size:
         xm, xh = np.nanmin(x), np.nanmax(x)
         if xm != xh:
@@ -29,6 +30,13 @@ def normalize(x, to_min=0., to_max=1.):
             return x * to_max / xh
     else:
         return x
+
+
+def norm_range(x, vmin=None, vmax=None, clip_min=0., clip_max=1.):
+    if vmin is None: vmin = np.nanmin(x)  # noqa
+    if vmax is None: vmax = np.nanmax(x)  # noqa
+
+    return np.clip((x - vmin) / (vmax - vmin), clip_min, clip_max)
 
 
 def extract_df_cols(data, **kwargs):
