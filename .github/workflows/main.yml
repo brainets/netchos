@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -U xarray plotly matplotlib numpy xlrd
+        pip install -U xarray plotly matplotlib numpy xlrd==1.2.0
         pip install -U sphinx sphinx-gallery sphinx_bootstrap_theme numpydoc sphinxcontrib-bibtex
         pip install -e .
     - name: Build Sphinx Doc
