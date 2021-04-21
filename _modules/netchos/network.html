@@ -67,6 +67,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#circular-layout-in-subplots">Circular layout in subplots</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_network.html">Network layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#load-the-data">Load the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#default-2d-layout">Default 2D layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#default-3d-layout">Default 3D layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#control-of-aesthetics">Control of aesthetics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#network-layout-in-subplots">Network layout in subplots</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a><ul>
@@ -135,8 +143,8 @@
     <span class="n">nodes_z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_size_min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">nodes_size_max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">nodes_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">edges_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edges_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">edges_width_min</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">edges_width_max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">edges_opacity_min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-    <span class="n">edges_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_title</span><span class="o">=</span><span class="s1">&#39;Edges&#39;</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_trace</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="n">edges_opacity_max</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">edges_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_title</span><span class="o">=</span><span class="s1">&#39;Edges&#39;</span><span class="p">,</span>
+    <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_trace</span><span class="o">=</span><span class="p">{},</span> <span class="n">kw_cbar</span><span class="o">=</span><span class="p">{}):</span>
     <span class="sd">&quot;&quot;&quot;Network plotting, either in 2D or 3D.</span>
 
 <span class="sd">    Parameters</span>
@@ -168,8 +176,8 @@
 <span class="sd">        Respectively the minimum and maximum to use for clipping edges values</span>
 <span class="sd">    edges_width_min, edges_width_max : float | .5, .8</span>
 <span class="sd">        Respectively the minimum and maximum width to use fot the edges</span>
-<span class="sd">    edges_opacity_min : float | 0.1</span>
-<span class="sd">        Minimum opacity for low strength edges</span>
+<span class="sd">    edges_opacity_min, edges_opacity_max : float | 0.1, 1.</span>
+<span class="sd">        Respectively the minimum and maximum opacity for edges</span>
 <span class="sd">    edges_cmap : str | &#39;plasma&#39;</span>
 <span class="sd">        Colormap to use to infer the color of each edge</span>
 <span class="sd">    cbar : bool | True</span>
@@ -211,7 +219,8 @@
         <span class="n">conn</span><span class="p">,</span> <span class="n">nodes_size_min</span><span class="o">=</span><span class="n">nodes_size_min</span><span class="p">,</span> <span class="n">nodes_size_max</span><span class="o">=</span><span class="n">nodes_size_max</span><span class="p">,</span>
         <span class="n">edges_min</span><span class="o">=</span><span class="n">edges_min</span><span class="p">,</span> <span class="n">edges_max</span><span class="o">=</span><span class="n">edges_max</span><span class="p">,</span>
         <span class="n">edges_width_min</span><span class="o">=</span><span class="n">edges_width_min</span><span class="p">,</span> <span class="n">edges_width_max</span><span class="o">=</span><span class="n">edges_width_max</span><span class="p">,</span>
-        <span class="n">edges_opacity_min</span><span class="o">=</span><span class="n">edges_opacity_min</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="n">directed</span><span class="p">,</span>
+        <span class="n">edges_opacity_min</span><span class="o">=</span><span class="n">edges_opacity_min</span><span class="p">,</span>
+        <span class="n">edges_opacity_max</span><span class="o">=</span><span class="n">edges_opacity_max</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="n">directed</span><span class="p">,</span>
         <span class="n">edges_cmap</span><span class="o">=</span><span class="n">edges_cmap</span><span class="p">,</span> <span class="n">edges_sorted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edges_rm_missing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kw_nodes</span>
     <span class="p">)</span>
@@ -290,7 +299,8 @@
             <span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span> <span class="n">hoverinfo</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">df_edges</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">]),</span>
             <span class="n">colorscale</span><span class="o">=</span><span class="n">edges_cmap</span><span class="p">,</span> <span class="n">showscale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">colorbar</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">cbar_title</span><span class="p">,</span> <span class="n">lenmode</span><span class="o">=</span><span class="s1">&#39;fraction&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mf">0.75</span><span class="p">))</span>
+            <span class="n">colorbar</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">cbar_title</span><span class="p">,</span> <span class="n">lenmode</span><span class="o">=</span><span class="s1">&#39;fraction&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+                          <span class="o">**</span><span class="n">kw_cbar</span><span class="p">))</span>
         <span class="p">)</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">cbar_trace</span><span class="p">)</span>
     

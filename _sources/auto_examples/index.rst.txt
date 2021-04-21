@@ -34,6 +34,27 @@ Illustration of the main functions.
    :hidden:
 
    /auto_examples/plot_circular
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the network layout ">
+
+.. only:: html
+
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_network_thumb.png
+     :alt: Network layout
+
+     :ref:`sphx_glr_auto_examples_plot_network.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_network
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>
