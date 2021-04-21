@@ -11,8 +11,8 @@ def network(
     nodes_z=None, nodes_color=None, nodes_size=None, nodes_size_min=1,
     nodes_size_max=30, nodes_cmap='plasma', edges_min=None, edges_max=None,
     edges_width_min=.5, edges_width_max=8, edges_opacity_min=0.1,
-    edges_cmap='plasma', cbar=True, cbar_title='Edges', directed=False,
-    fig=None, kw_trace={}):
+    edges_opacity_max=1., edges_cmap='plasma', cbar=True, cbar_title='Edges',
+    directed=False, fig=None, kw_trace={}, kw_cbar={}):
     """Network plotting, either in 2D or 3D.
 
     Parameters
@@ -44,8 +44,8 @@ def network(
         Respectively the minimum and maximum to use for clipping edges values
     edges_width_min, edges_width_max : float | .5, .8
         Respectively the minimum and maximum width to use fot the edges
-    edges_opacity_min : float | 0.1
-        Minimum opacity for low strength edges
+    edges_opacity_min, edges_opacity_max : float | 0.1, 1.
+        Respectively the minimum and maximum opacity for edges
     edges_cmap : str | 'plasma'
         Colormap to use to infer the color of each edge
     cbar : bool | True
@@ -87,7 +87,8 @@ def network(
         conn, nodes_size_min=nodes_size_min, nodes_size_max=nodes_size_max,
         edges_min=edges_min, edges_max=edges_max,
         edges_width_min=edges_width_min, edges_width_max=edges_width_max,
-        edges_opacity_min=edges_opacity_min, directed=directed,
+        edges_opacity_min=edges_opacity_min,
+        edges_opacity_max=edges_opacity_max, directed=directed,
         edges_cmap=edges_cmap, edges_sorted=True, edges_rm_missing=True,
         **kw_nodes
     )
@@ -166,7 +167,8 @@ def network(
             x=[0.], y=[0.], mode='markers', hoverinfo='none', showlegend=False,
             marker=dict(size=[0.], color=list(df_edges['values']),
             colorscale=edges_cmap, showscale=True,
-            colorbar=dict(title=cbar_title, lenmode='fraction', len=0.75))
+            colorbar=dict(title=cbar_title, lenmode='fraction', len=0.75,
+                          **kw_cbar))
         )
         fig.add_trace(cbar_trace)
     
