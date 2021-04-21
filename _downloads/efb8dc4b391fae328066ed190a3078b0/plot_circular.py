@@ -2,7 +2,7 @@
 Circular layout
 ===============
 
-Example illustrtaing the circular layout
+Example illustrating the circular layout
 """
 import os
 
@@ -91,5 +91,32 @@ fig = circular(
 )
 fig.update_layout(width=600, height=700, title='<b>Control of aesthetics</b>',
                   title_x=0.5, template='plotly_dark')
+
+fig
+
+###############################################################################
+# Circular layout in subplots
+# ---------------------------
+
+fig = make_subplots(rows=1, cols=2, subplot_titles=('Subplot 1', 'Subplot 2'))
+
+# configuring the first subplot
+circular(
+    ufc, nodes_data=ma, nodes_name='Name', nodes_size='degree',
+    nodes_color='degree', categories='Lobe', nodes_cmap='plasma_r',
+    edges_cmap='plasma_r', angle_range=180, fig=fig,
+    kw_trace=dict(row=1, col=1), kw_cbar=dict(x=0.4)
+)
+
+# configuring the second subplot
+circular(
+    ufc, nodes_data=ma, nodes_name='Name', nodes_size='strength',
+    nodes_color='strength', categories='Lobe', nodes_cmap='magma_r',
+    edges_cmap='magma_r', angle_range=180, fig=fig,
+    kw_trace=dict(row=1, col=2), kw_cbar=dict(x=0.95)
+)
+
+title = "<b>Illustration of adding circular layouts to subplots</b>"
+fig.update_layout(width=1000, height=800, title=title, title_x=0.5)
 
 fig

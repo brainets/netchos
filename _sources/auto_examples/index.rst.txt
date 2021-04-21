@@ -16,7 +16,7 @@ Illustration of the main functions.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrtaing the circular layout ">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the circular layout ">
 
 .. only:: html
 
