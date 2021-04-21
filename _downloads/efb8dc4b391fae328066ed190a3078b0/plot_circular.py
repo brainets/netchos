@@ -15,7 +15,7 @@ import plotly.io as pio
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-# pio.renderers.default = 'sphinx_gallery'
+pio.renderers.default = 'sphinx_gallery'
 pio.templates.default = 'plotly_white'
 
 
