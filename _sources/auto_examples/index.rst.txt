@@ -16,6 +16,27 @@ Illustration of the main functions.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the heatmap layout. ">
+
+.. only:: html
+
+ .. figure:: /auto_examples/images/thumb/sphx_glr_plot_heatmap_thumb.png
+     :alt: Heatmap layout
+
+     :ref:`sphx_glr_auto_examples_plot_heatmap.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_heatmap
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the circular layout ">
 
 .. only:: html
