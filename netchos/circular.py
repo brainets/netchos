@@ -10,10 +10,11 @@ from netchos.utils import (normalize, extract_df_cols, prepare_to_plot,
 def circular(
     conn, nodes_data=None, categories=None, nodes_name=None, nodes_color=None,
     nodes_size=None, nodes_size_min=1, nodes_size_max=10, nodes_cmap='plasma',
-    nodes_text_offset=1., edges_min=None, edges_max=None, edges_width_min=.5,
-    edges_width_max=6, edges_opacity_min=0.1, edges_cmap='plasma', cbar=True,
-    cbar_title='Edges', directed=False, angle_start=90, angle_range=360,
-    fig=None, kw_trace={}):
+    nodes_text_offset=1., nodes_text_size=12, edges_min=None, edges_max=None,
+    edges_width_min=.5, edges_width_max=6, edges_opacity_min=0.1,
+    edges_opacity_max=1., edges_cmap='plasma', cbar=True, cbar_title='Edges',
+    directed=False, angle_start=90, angle_range=360, fig=None, kw_trace={},
+    kw_cbar={}):
     """Network plotting within a circular layout.
 
     Parameters
@@ -44,12 +45,14 @@ def circular(
         Colormap to use in order to infer the color of each node
     nodes_text_offset : float | 1.
         Floating point indicating the offset to apply to the name of each node
+    nodes_text_size : float | 12
+        Font size for the nodes names
     edges_min, edges_max : float | None
         Respectively the minimum and maximum to use for clipping edges values
     edges_width_min, edges_width_max : float | .5, .8
         Respectively the minimum and maximum width to use fot the edges
-    edges_opacity_min : float | 0.1
-        Minimum opacity for low strength edges
+    edges_opacity_min, edges_opacity_max : float | 0.1, 1.
+        Respectively the minimum and maximum opacity for edges
     edges_cmap : str | 'plasma'
         Colormap to use to infer the color of each edge
     cbar : bool | True
@@ -93,7 +96,8 @@ def circular(
         conn, nodes_size_min=nodes_size_min, nodes_size_max=nodes_size_max,
         edges_min=edges_min, edges_max=edges_max,
         edges_width_min=edges_width_min, edges_width_max=edges_width_max,
-        edges_opacity_min=edges_opacity_min, directed=directed,
+        edges_opacity_min=edges_opacity_min,
+        edges_opacity_max=edges_opacity_max, directed=directed,
         edges_cmap=edges_cmap, edges_sorted=True, edges_rm_missing=True,
         **kw_nodes
     )
@@ -158,12 +162,12 @@ def circular(
     trace = go.Scatter(
         x=x, y=y, mode='markers', text=list(df_nodes['name']),
         hovertemplate=hovertemplate, customdata=customdata, name='Nodes',
-        marker=dict(
+        showlegend=False, marker=dict(
             sizemode='area', color=df_nodes['color_plt'], sizeref=sizeref,
             size=df_nodes['size_plt'], colorscale=nodes_cmap, opacity=1.
             ),
     )
-    fig.add_trace(trace)
+    fig.add_trace(trace, **kw_trace)
 
     # -------------------------------------------------------------------------
     #                           NODES NAMES PLOT
@@ -172,7 +176,8 @@ def circular(
         off = np.pi if x_names[k] < 0 else 0.
         fig.add_annotation(
             x=x_names[k], y=y_names[k], text=nodes_name[k], showarrow=False,
-            textangle=np.rad2deg(off - angle[k])
+            textangle=np.rad2deg(off - angle[k]),
+            font=dict(size=nodes_text_size), **kw_trace
             )
 
     # -------------------------------------------------------------------------
@@ -187,25 +192,28 @@ def circular(
         _path = dict(type='path', path=f"M {x[k]},{y[k]} Q 0,0 {x[i]},{y[i]}",
                     line_color=color[n_p], line=dict(width=width[n_p]),
                     opacity=opacity[n_p], layer="below")
-        # add to the list of all path
-        shapes += [_path]
-    fig.update_layout(shapes=shapes)
+        fig.add_shape(_path, **kw_trace)
 
     # -------------------------------------------------------------------------
     #                           COLORBAR PLOT
     # -------------------------------------------------------------------------
-    cbar_trace = go.Scatter(
-        x=[0.], y=[0.], mode='markers', hoverinfo='none', showlegend=False,
-        marker=dict(
-            size=[0.], color=list(df_edges['values']), colorscale=edges_cmap,
-            showscale=True, colorbar=dict(title=cbar_title, lenmode='fraction',
-            len=0.75)
-            )
-    )
-    fig.add_trace(cbar_trace)
+    if cbar:
+        cbar_trace = go.Scatter(
+            x=[0.], y=[0.], mode='markers', hoverinfo='none', showlegend=False,
+            marker=dict(
+                size=[0.], color=list(df_edges['colorbar']),
+                colorscale=edges_cmap, showscale=True,
+                colorbar=dict(title=cbar_title, lenmode='fraction', len=0.75,
+                              **kw_cbar)
+                )
+        )
+        fig.add_trace(cbar_trace, **kw_trace)
 
     axis = dict(showgrid=False, visible=False, scaleanchor="x", scaleratio=1)
-    width = min(angle_range * 500 / 180, 800)
-    fig.update_layout(width=width, height=800, xaxis=axis, yaxis=axis)
+    fig.update_xaxes(**axis, **kw_trace)
+    fig.update_yaxes(**axis, **kw_trace)
+    if not len(kw_trace):
+        width = min(angle_range * 500 / 180, 800)
+        fig.update_layout(width=width, height=800)
 
     return fig

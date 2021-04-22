@@ -77,9 +77,10 @@ def heatmap(conn, catline_x=None, catline_y=None, catline=None,
         catline = mpl_to_px_inputs(catline, "line")
         trace = go.Heatmap(z=conn, x=conn.columns, y=conn.index, **kwargs)
         fig.add_trace(trace, **kw_trace)
-        fig.update_yaxes(tickmode='linear', autorange='reversed')
-        fig.update_xaxes(tickmode='linear')
-        fig.update_layout(width=900, height=850)
+        fig.update_yaxes(tickmode='linear', autorange='reversed', **kw_trace)
+        fig.update_xaxes(tickmode='linear', **kw_trace)
+        if not len(kw_trace):
+            fig.update_layout(width=900, height=850)
 
         # categorical lines
         if isinstance(catline_x, dict):

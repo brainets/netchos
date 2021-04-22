@@ -12,7 +12,7 @@ Description
 Documentation
 -------------
 
-[No doc for the moment. Coming soon]
+Link to the documentation : https://brainets.github.io/netchos/
 
 Installation
 ------------
