@@ -1,6 +1,6 @@
 """
-Frites
-======
+Netchos
+=======
 
 Network, Connectivity and Hierarchically Organized Structures
 """
