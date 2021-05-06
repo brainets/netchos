@@ -15,7 +15,6 @@ import plotly.io as pio
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-pio.renderers.default = 'sphinx_gallery'
 pio.templates.default = 'plotly_white'
 
 
@@ -89,7 +88,7 @@ kw_circ['angle_start'] = 90         # start circle at 90°
 kw_circ['angle_range'] = 180        # use only half of the circle
 kw_circ['cbar_title'] = 'Significant links (p<0.05)'
 
-
+# sphinx_gallery_thumbnail_number = 3
 fig = circular(
     ufc, nodes_data=ma, nodes_name='Name', nodes_size='degree',
     nodes_color='strength', categories='Lobe', **kw_circ

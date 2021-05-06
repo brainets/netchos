@@ -66,14 +66,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_heatmap.html#heatmap-layout-in-subplots">Heatmap layout in subplots</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_circular.html">Circular layout</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#load-the-data">Load the data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#default-layout">Default layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#passing-data-to-the-nodes">Passing data to the nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#control-of-aesthetics">Control of aesthetics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#circular-layout-in-subplots">Circular layout in subplots</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_network.html">Network layout</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#load-the-data">Load the data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#default-2d-layout">Default 2D layout</a></li>
@@ -82,11 +74,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_network.html#network-layout-in-subplots">Network layout in subplots</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_circular.html">Circular layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#load-the-data">Load the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#default-layout">Default layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#passing-data-to-the-nodes">Passing data to the nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#control-of-aesthetics">Control of aesthetics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../auto_examples/plot_circular.html#circular-layout-in-subplots">Circular layout in subplots</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#plotting-methods">PLotting methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api.html#frites">Frites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api.html#netchos">Netchos</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/netchos.heatmap.html">netchos.heatmap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/netchos.network.html">netchos.network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/netchos.circular.html">netchos.circular</a></li>
@@ -150,7 +150,7 @@
     <span class="n">conn</span><span class="p">,</span> <span class="n">nodes_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">nodes_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_size_min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes_size_max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nodes_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
     <span class="n">nodes_text_offset</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">nodes_text_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">edges_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edges_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">edges_width_min</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">edges_width_max</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">edges_opacity_min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">edges_width_min</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">edges_width_max</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">edges_opacity_min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
     <span class="n">edges_opacity_max</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">edges_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_title</span><span class="o">=</span><span class="s1">&#39;Edges&#39;</span><span class="p">,</span>
     <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">angle_start</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">angle_range</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_trace</span><span class="o">=</span><span class="p">{},</span>
     <span class="n">kw_cbar</span><span class="o">=</span><span class="p">{}):</span>
@@ -369,7 +369,7 @@
       
     </p>
     <p>
-        &copy; Copyright Last updated on 2021-04-21.<br/>
+        &copy; Copyright Last updated on 2021-05-06.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
