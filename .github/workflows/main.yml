@@ -30,6 +30,7 @@ jobs:
         pip install -e .
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Build the Doc 🔧
