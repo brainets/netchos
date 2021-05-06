@@ -16,7 +16,7 @@ Illustration of the main functions.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the heatmap layout. ">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the heatmap layout.">
 
 .. only:: html
 
@@ -37,7 +37,7 @@ Illustration of the main functions.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the circular layout ">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the circular layout">
 
 .. only:: html
 
@@ -58,7 +58,7 @@ Illustration of the main functions.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the network layout ">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example illustrating the network layout">
 
 .. only:: html
 

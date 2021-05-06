@@ -83,6 +83,10 @@ Load the data
 
  .. code-block:: none
 
+    /home/runner/work/netchos/netchos/examples/plot_network.py:27: FutureWarning:
+
+    Your version of xlrd is 1.2.0. In xlrd >= 2.0, only the xls format is supported. As a result, the openpyxl engine will be used if it is installed and the engine argument is not specified. Install openpyxl instead.
+
                  aINS      pINS  ACC  PFCvm  ...        Cu  VCs       VCl      VCcm
     sources                                  ...                                   
     aINS     0.005500  0.001185  NaN    NaN  ...       NaN  NaN       NaN       NaN
@@ -132,6 +136,10 @@ Load the data
     VCcm          NaN       NaN  NaN    NaN  ...       NaN  NaN  0.005478  0.014947
 
     [45 rows x 45 columns]
+    /home/runner/work/netchos/netchos/examples/plot_network.py:31: FutureWarning:
+
+    Your version of xlrd is 1.2.0. In xlrd >= 2.0, only the xls format is supported. As a result, the openpyxl engine will be used if it is installed and the engine argument is not specified. Install openpyxl instead.
+
         Unnamed: 0    Name LR_Name  ... ycoord_3D zcoord_3D lobe_color
     0            0    aINS    aINS  ...      33.0      49.0    #636EFA
     1            1    pINS    pINS  ...      33.0      49.0    #636EFA
@@ -326,7 +334,7 @@ Network layout in subplots
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.808 seconds)
+   **Total running time of the script:** ( 0 minutes  5.091 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_network.py:
