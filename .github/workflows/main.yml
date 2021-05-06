@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,6 +29,7 @@ jobs:
         pip install -U sphinx sphinx-gallery kaleido sphinx_bootstrap_theme numpydoc sphinxcontrib-bibtex
         pip install -e .
 
+  deploy:
     - name: Build the Doc 🔧
       run: |
         cd docs
