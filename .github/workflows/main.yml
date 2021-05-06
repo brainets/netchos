@@ -7,7 +7,7 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
@@ -30,16 +30,18 @@ jobs:
         pip install -e .
 
   deploy:
-    - name: Build the Doc 🔧
-      run: |
-        cd docs
-        make html
-        touch build/html/.nojekyll
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build the Doc 🔧
+        run: |
+          cd docs
+          make html
+          touch build/html/.nojekyll
 
-    - name: Deploy Github Pages 🚀
-      uses: JamesIves/github-pages-deploy-action@4.1.1
-      with:
-        branch: gh-pages
-        folder: docs/build/html/
-        clean: true
-        ssh-key: ${{ secrets.DEPLOY_KEY }}
+      - name: Deploy Github Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: docs/build/html/
+          clean: true
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
