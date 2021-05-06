@@ -5,12 +5,12 @@
 
 Computation times
 =================
-**00:19.058** total execution time for **auto_examples** files:
+**00:21.876** total execution time for **auto_examples** files:
 
 +-----------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_circular.py` (``plot_circular.py``) | 00:09.205 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_circular.py` (``plot_circular.py``) | 00:11.279 | 0.0 MB |
 +-----------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_network.py` (``plot_network.py``)   | 00:05.889 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_network.py` (``plot_network.py``)   | 00:06.808 | 0.0 MB |
 +-----------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_heatmap.py` (``plot_heatmap.py``)   | 00:03.964 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_plot_heatmap.py` (``plot_heatmap.py``)   | 00:03.790 | 0.0 MB |
 +-----------------------------------------------------------------------+-----------+--------+
