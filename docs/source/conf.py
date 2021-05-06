@@ -20,7 +20,6 @@ from sphinx_gallery.sorting import ExplicitOrder
 sys.path.insert(0, os.path.abspath('sphinxext'))
 
 import plotly.io as pio
-pio.renderers.default = 'sphinx_gallery'
 
 
 # -- Project information -----------------------------------------------------
