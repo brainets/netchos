@@ -9,6 +9,8 @@ Description
 
 `NetCHOS <https://brainets.github.io/netchos/>`_ is a Python toolbox dedicated to network plotting, potentially with interactions, using standard plotting libraries (matplotlib, seaborn or plotly).
 
+.. image:: NetCHOS.png
+
 Documentation
 -------------
 
