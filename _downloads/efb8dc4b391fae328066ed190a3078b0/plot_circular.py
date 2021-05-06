@@ -45,7 +45,7 @@ fig = circular(
     ufc
 )
 fig.update_layout(title=title)
-fig
+pio.show(fig)
 
 ###############################################################################
 # Passing data to the nodes
@@ -63,7 +63,7 @@ fig = circular(
     ufc, nodes_data=ma, nodes_name='Name', nodes_size='degree',
     nodes_color='strength', categories='Lobe'
 )
-fig
+pio.show(fig)
 
 ###############################################################################
 # Control of aesthetics
@@ -95,8 +95,7 @@ fig = circular(
 )
 fig.update_layout(width=600, height=700, title='<b>Control of aesthetics</b>',
                   title_x=0.5, template='plotly_dark')
-
-fig
+pio.show(fig)
 
 ###############################################################################
 # Circular layout in subplots
@@ -122,5 +121,4 @@ circular(
 
 title = "<b>Illustration of adding circular layouts to subplots</b>"
 fig.update_layout(width=1000, height=800, title=title, title_x=0.5)
-
-fig
+pio.show(fig)

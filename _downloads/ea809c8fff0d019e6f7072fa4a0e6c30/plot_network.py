@@ -47,7 +47,7 @@ fig = network(
     nodes_x='xcoord_2D',  # x-coordinate name in nodes_data table
     nodes_y='ycoord_2D'   # y-coordinate name in nodes_data table
 )
-fig
+pio.show(fig)
 
 ###############################################################################
 # Default 3D layout
@@ -60,12 +60,13 @@ fig = network(
     nodes_y='ycoord_3D',  # y-coordinate name in nodes_data table
     nodes_z='zcoord_3D'   # z-coordinate name in nodes_data table
 )
-fig
+pio.show(fig)
 
 ###############################################################################
 # Control of aesthetics
 # ---------------------
 
+# sphinx_gallery_thumbnail_number = 3
 fig = network(
     ufc, nodes_data=ma,
     nodes_x='xcoord_2D',      # x-coordinate (column name in ma)
@@ -83,7 +84,7 @@ fig = network(
 
 title = '<b>Control of aesthetics</b>'
 fig.update_layout(template='plotly_dark', title=title, title_x=.5)
-fig
+pio.show(fig)
 
 ###############################################################################
 # Network layout in subplots
@@ -111,4 +112,4 @@ network(
 
 title = "<b>Illustration of adding network layouts to subplots</b>"
 fig.update_layout(width=1200, height=600, title=title, title_x=0.5)
-fig
+pio.show(fig)
