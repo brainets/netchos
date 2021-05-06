@@ -125,7 +125,6 @@ image_scrapers = ('matplotlib', plotly_sg_scraper,)
 sphinx_gallery_conf = {
     # path to your examples scripts
     'examples_dirs': '../../examples',
-    'sphinx_gallery': None,
     'reference_url': {
         'netchos': None,
         'matplotlib': 'https://matplotlib.org',
