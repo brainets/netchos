@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
-        python-version: [3.6, 3.7, 3.8]
+        python-version: [3.7, 3.8]
 
     steps:
     - name: Checkout 🛎️
