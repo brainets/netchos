@@ -126,7 +126,7 @@ def circular(
     r = np.full((n_nodes,), 10.)
     angle = np.linspace(0, angle_range_rad, n_nodes + 1 + n_cat)[0:-1]
     delta = (angle[1] - angle[0]) / 2.
-    angle = angle + angle_start_rad + delta
+    angle = angle + angle_start_rad + 2 * delta
     if n_cat:
         angle = np.delete(angle, cuts + np.arange(n_cat))
 
