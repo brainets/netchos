@@ -54,8 +54,8 @@ def plotly_map_color(vals, colorscale, vmin=None, vmax=None, return_hex=True):
     if vmin is None: vmin = np.nanmin(vals)  # noqa
     if vmax is None: vmax = np.nanmax(vals)  # noqa
 
-    if vmin >= vmax:
-        raise ValueError("`vmin` should be < `vmax`.")
+    if vmin > vmax:
+        raise ValueError("`vmin` should be <= `vmax`.")
 
     if isinstance(colorscale, str):
         colorscale = get_colorscale_values(colorscale)
@@ -81,7 +81,10 @@ def plotly_map_color(vals, colorscale, vmin=None, vmax=None, return_hex=True):
     colorscale_diff_ratios = colorscale_diffs[:, 1:] / colorscale_diffs[:, [0]]
     colorscale_diff_ratios[-1, :] = np.zeros(3)
 
-    vals_scaled = (vals - vmin) / (vmax - vmin)
+    if vmin < vmax:
+        vals_scaled = (vals - vmin) / (vmax - vmin)
+    else:
+        vals_scaled = np.full(vals.shape, 0.5)
 
     left_bin_indices = np.digitize(vals_scaled, scale) - 1
     left_endpts = colorscale[left_bin_indices]

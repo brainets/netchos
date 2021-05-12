@@ -36,7 +36,10 @@ def norm_range(x, vmin=None, vmax=None, clip_min=0., clip_max=1.):
     if vmin is None: vmin = np.nanmin(x)  # noqa
     if vmax is None: vmax = np.nanmax(x)  # noqa
 
-    return np.clip((x - vmin) / (vmax - vmin), clip_min, clip_max)
+    if vmin < vmax:
+        return np.clip((x - vmin) / (vmax - vmin), clip_min, clip_max)
+    else:
+        return np.full_like(x, 0.5)
 
 
 def extract_df_cols(data, **kwargs):
