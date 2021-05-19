@@ -15,7 +15,6 @@ import plotly.io as pio
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-pio.renderers.default = 'sphinx_gallery'
 pio.templates.default = 'plotly_white'
 
 
@@ -39,7 +38,7 @@ print(ma)
 fig = heatmap(
     ufc
 )
-fig
+pio.show(fig)
 
 ###############################################################################
 # Adding categorical lines
@@ -51,13 +50,14 @@ vmin, vmax = 0., 0.02
 # create the categories (node_name: category_name)
 cat = {n: c for n, c in zip(ma['Name'], ma['Lobe'])}
 
+# sphinx_gallery_thumbnail_number = 2
 fig = heatmap(
     ufc, catline_x=cat, catline_y=cat, catline=dict(lw=2., color='white'),
     cmap='agsunset_r', vmin=vmin, vmax=vmax
 )
 fig.update_layout(title='<b>Categorical lines</b>', title_x=.5,
                   template='plotly_dark')
-fig
+pio.show(fig)
 
 ###############################################################################
 # Heatmap layout in subplots
@@ -77,4 +77,4 @@ heatmap(
     vmin=vmin, vmax=vmax, cmap='magma', fig=fig, kw_trace=dict(row=1, col=2)
 )
 fig.update_layout(width=1200, height=600)
-fig
+pio.show(fig)

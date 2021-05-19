@@ -60,7 +60,7 @@ def prepare_to_plot(
     # nodes names
     if nodes_name is None:
         if isinstance(conn, pd.DataFrame):
-            nodes_name = conn.index
+            nodes_name = [str(k) for k in conn.index]
         else:
             nodes_name = [str(k) for k in range(n_nodes)]
     df_nodes['name'] = nodes_name

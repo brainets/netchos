@@ -15,7 +15,6 @@ import plotly.io as pio
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-pio.renderers.default = 'sphinx_gallery'
 pio.templates.default = 'plotly_white'
 
 
@@ -46,7 +45,7 @@ fig = circular(
     ufc
 )
 fig.update_layout(title=title)
-fig
+pio.show(fig)
 
 ###############################################################################
 # Passing data to the nodes
@@ -64,7 +63,7 @@ fig = circular(
     ufc, nodes_data=ma, nodes_name='Name', nodes_size='degree',
     nodes_color='strength', categories='Lobe'
 )
-fig
+pio.show(fig)
 
 ###############################################################################
 # Control of aesthetics
@@ -89,15 +88,14 @@ kw_circ['angle_start'] = 90         # start circle at 90°
 kw_circ['angle_range'] = 180        # use only half of the circle
 kw_circ['cbar_title'] = 'Significant links (p<0.05)'
 
-
+# sphinx_gallery_thumbnail_number = 3
 fig = circular(
     ufc, nodes_data=ma, nodes_name='Name', nodes_size='degree',
     nodes_color='strength', categories='Lobe', **kw_circ
 )
 fig.update_layout(width=600, height=700, title='<b>Control of aesthetics</b>',
                   title_x=0.5, template='plotly_dark')
-
-fig
+pio.show(fig)
 
 ###############################################################################
 # Circular layout in subplots
@@ -123,5 +121,4 @@ circular(
 
 title = "<b>Illustration of adding circular layouts to subplots</b>"
 fig.update_layout(width=1000, height=800, title=title, title_x=0.5)
-
-fig
+pio.show(fig)

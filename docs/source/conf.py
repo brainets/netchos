@@ -19,6 +19,8 @@ from sphinx_gallery.sorting import ExplicitOrder
 # sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('sphinxext'))
 
+import plotly.io as pio
+
 
 # -- Project information -----------------------------------------------------
 
@@ -116,10 +118,12 @@ html_theme_options = {
     ],
 }
 
+from plotly.io._sg_scraper import plotly_sg_scraper
+image_scrapers = ('matplotlib', plotly_sg_scraper,)
+
 sphinx_gallery_conf = {
     # path to your examples scripts
     'examples_dirs': '../../examples',
-    'sphinx_gallery': None,
     'reference_url': {
         'netchos': None,
         'matplotlib': 'https://matplotlib.org',
@@ -130,6 +134,7 @@ sphinx_gallery_conf = {
     'gallery_dirs': 'auto_examples',
     'backreferences_dir': 'generated',
     'filename_pattern': '/plot_|sim_',
+    'image_scrapers': image_scrapers,
     # 'default_thumb_file': 'source/_static/netchos.png',
 }
 
