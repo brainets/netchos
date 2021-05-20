@@ -9,10 +9,10 @@ from .misc import normalize, norm_range
 def prepare_to_plot(
         conn, nodes_name=None, nodes_size=None, nodes_size_min=1,
         nodes_size_max=10, nodes_color=None, nodes_x=None, nodes_y=None,
-        nodes_z=None, edges_min=None, edges_max=None, edges_width_min=.5,
-        edges_width_max=8, edges_opacity_min=.1, edges_opacity_max=1.,
-        edges_cmap='plasma', edges_sorted=True, edges_rm_missing=True,
-        directed=False, backend='plotly'):
+        nodes_z=None, nodes_text=None, edges_min=None, edges_max=None,
+        edges_width_min=.5, edges_width_max=8, edges_opacity_min=.1,
+        edges_opacity_max=1., edges_cmap='plasma', edges_sorted=True,
+        edges_rm_missing=True, directed=False, backend='plotly'):
     """Function to extract variables that are then used for plotting graph.
 
     Parameters
@@ -94,6 +94,11 @@ def prepare_to_plot(
     if nodes_z is None:
         nodes_z = np.full((n_nodes,), np.nan)
     df_nodes['x'], df_nodes['y'], df_nodes['z'] = nodes_x, nodes_y, nodes_z
+
+    # nodes text
+    if nodes_text is None:
+        nodes_text = {n: n for n in list(df_nodes['name'])}
+    df_nodes['text'] = [nodes_text[n] for n in list(df_nodes['name'])]
 
     # dataframe conversion
     df_nodes = pd.DataFrame(df_nodes)
