@@ -149,11 +149,11 @@
 <div class="viewcode-block" id="circular"><a class="viewcode-back" href="../../generated/netchos.circular.html#netchos.circular">[docs]</a><span class="k">def</span> <span class="nf">circular</span><span class="p">(</span>
     <span class="n">conn</span><span class="p">,</span> <span class="n">nodes_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">nodes_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_size_min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes_size_max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nodes_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
-    <span class="n">nodes_text_offset</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">nodes_text_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">edges_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edges_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">edges_width_min</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">edges_width_max</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">edges_opacity_min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-    <span class="n">edges_opacity_max</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">edges_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_title</span><span class="o">=</span><span class="s1">&#39;Edges&#39;</span><span class="p">,</span>
-    <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">angle_start</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">angle_range</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_trace</span><span class="o">=</span><span class="p">{},</span>
-    <span class="n">kw_cbar</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="n">nodes_text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_text_offset</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">nodes_text_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">edges_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">edges_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edges_width_min</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">edges_width_max</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">edges_opacity_min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">edges_opacity_max</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">edges_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_title</span><span class="o">=</span><span class="s1">&#39;Edges&#39;</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">angle_start</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+    <span class="n">angle_range</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_trace</span><span class="o">=</span><span class="p">{},</span> <span class="n">kw_cbar</span><span class="o">=</span><span class="p">{}):</span>
     <span class="sd">&quot;&quot;&quot;Network plotting within a circular layout.</span>
 
 <span class="sd">    Parameters</span>
@@ -182,6 +182,9 @@
 <span class="sd">        Respectively, the minimum and maximum size to use for the markers</span>
 <span class="sd">    nodes_cmap : str | &#39;plasma&#39;</span>
 <span class="sd">        Colormap to use in order to infer the color of each node</span>
+<span class="sd">    nodes_text : dict | None</span>
+<span class="sd">        Text to display at each node. It should be a dict where the keys are</span>
+<span class="sd">        the nodes names and the values the text to display</span>
 <span class="sd">    nodes_text_offset : float | 1.</span>
 <span class="sd">        Floating point indicating the offset to apply to the name of each node</span>
 <span class="sd">    nodes_text_size : float | 12</span>
@@ -233,7 +236,7 @@
     <span class="c1"># get useful variables for plotting</span>
     <span class="n">df_nodes</span><span class="p">,</span> <span class="n">df_edges</span> <span class="o">=</span> <span class="n">prepare_to_plot</span><span class="p">(</span>
         <span class="n">conn</span><span class="p">,</span> <span class="n">nodes_size_min</span><span class="o">=</span><span class="n">nodes_size_min</span><span class="p">,</span> <span class="n">nodes_size_max</span><span class="o">=</span><span class="n">nodes_size_max</span><span class="p">,</span>
-        <span class="n">edges_min</span><span class="o">=</span><span class="n">edges_min</span><span class="p">,</span> <span class="n">edges_max</span><span class="o">=</span><span class="n">edges_max</span><span class="p">,</span>
+        <span class="n">nodes_text</span><span class="o">=</span><span class="n">nodes_text</span><span class="p">,</span> <span class="n">edges_min</span><span class="o">=</span><span class="n">edges_min</span><span class="p">,</span> <span class="n">edges_max</span><span class="o">=</span><span class="n">edges_max</span><span class="p">,</span>
         <span class="n">edges_width_min</span><span class="o">=</span><span class="n">edges_width_min</span><span class="p">,</span> <span class="n">edges_width_max</span><span class="o">=</span><span class="n">edges_width_max</span><span class="p">,</span>
         <span class="n">edges_opacity_min</span><span class="o">=</span><span class="n">edges_opacity_min</span><span class="p">,</span>
         <span class="n">edges_opacity_max</span><span class="o">=</span><span class="n">edges_opacity_max</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="n">directed</span><span class="p">,</span>
@@ -311,10 +314,11 @@
     <span class="c1"># -------------------------------------------------------------------------</span>
     <span class="c1">#                           NODES NAMES PLOT</span>
     <span class="c1"># -------------------------------------------------------------------------</span>
+    <span class="n">nodes_text</span> <span class="o">=</span> <span class="n">df_nodes</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">):</span>
         <span class="n">off</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="k">if</span> <span class="n">x_names</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">add_annotation</span><span class="p">(</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">x_names</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_names</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span><span class="n">nodes_name</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">x_names</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_names</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span><span class="n">nodes_text</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">textangle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">off</span> <span class="o">-</span> <span class="n">angle</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span>
             <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">nodes_text_size</span><span class="p">),</span> <span class="o">**</span><span class="n">kw_trace</span>
             <span class="p">)</span>
@@ -369,7 +373,7 @@
       
     </p>
     <p>
-        &copy; Copyright Last updated on 2021-05-12.<br/>
+        &copy; Copyright Last updated on 2021-05-20.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br/>
     </p>
   </div>
