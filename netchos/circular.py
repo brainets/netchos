@@ -10,11 +10,11 @@ from netchos.utils import (normalize, extract_df_cols, prepare_to_plot,
 def circular(
     conn, nodes_data=None, categories=None, nodes_name=None, nodes_color=None,
     nodes_size=None, nodes_size_min=1, nodes_size_max=10, nodes_cmap='plasma',
-    nodes_text_offset=1., nodes_text_size=12, edges_min=None, edges_max=None,
-    edges_width_min=.5, edges_width_max=6, edges_opacity_min=0.1,
-    edges_opacity_max=1., edges_cmap='plasma', cbar=True, cbar_title='Edges',
-    directed=False, angle_start=90, angle_range=360, fig=None, kw_trace={},
-    kw_cbar={}):
+    nodes_text=None, nodes_text_offset=1., nodes_text_size=12, edges_min=None,
+    edges_max=None, edges_width_min=.5, edges_width_max=6,
+    edges_opacity_min=0.1, edges_opacity_max=1., edges_cmap='plasma',
+    cbar=True, cbar_title='Edges', directed=False, angle_start=90,
+    angle_range=360, fig=None, kw_trace={}, kw_cbar={}):
     """Network plotting within a circular layout.
 
     Parameters
@@ -43,6 +43,9 @@ def circular(
         Respectively, the minimum and maximum size to use for the markers
     nodes_cmap : str | 'plasma'
         Colormap to use in order to infer the color of each node
+    nodes_text : dict | None
+        Text to display at each node. It should be a dict where the keys are
+        the nodes names and the values the text to display
     nodes_text_offset : float | 1.
         Floating point indicating the offset to apply to the name of each node
     nodes_text_size : float | 12
@@ -94,7 +97,7 @@ def circular(
     # get useful variables for plotting
     df_nodes, df_edges = prepare_to_plot(
         conn, nodes_size_min=nodes_size_min, nodes_size_max=nodes_size_max,
-        edges_min=edges_min, edges_max=edges_max,
+        nodes_text=nodes_text, edges_min=edges_min, edges_max=edges_max,
         edges_width_min=edges_width_min, edges_width_max=edges_width_max,
         edges_opacity_min=edges_opacity_min,
         edges_opacity_max=edges_opacity_max, directed=directed,
@@ -172,10 +175,11 @@ def circular(
     # -------------------------------------------------------------------------
     #                           NODES NAMES PLOT
     # -------------------------------------------------------------------------
+    nodes_text = df_nodes['text']
     for k in range(n_nodes):
         off = np.pi if x_names[k] < 0 else 0.
         fig.add_annotation(
-            x=x_names[k], y=y_names[k], text=nodes_name[k], showarrow=False,
+            x=x_names[k], y=y_names[k], text=nodes_text[k], showarrow=False,
             textangle=np.rad2deg(off - angle[k]),
             font=dict(size=nodes_text_size), **kw_trace
             )
