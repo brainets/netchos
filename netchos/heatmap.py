@@ -59,6 +59,8 @@ def heatmap(conn, catline_x=None, catline_y=None, catline=None,
         kwargs['yticklabels'] = kwargs.get('yticklabels', True)
         # main heatmap
         ax = sns.heatmap(conn, **kwargs)
+        # xlabel on top
+        ax.xaxis.set_ticks_position('top')
         # categorical lines
         if isinstance(catline_x, dict):
             for k in categorize(columns, catline_x):
