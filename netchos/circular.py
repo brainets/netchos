@@ -8,13 +8,14 @@ from netchos.utils import (normalize, extract_df_cols, prepare_to_plot,
 
 
 def circular(
-    conn, nodes_data=None, categories=None, nodes_name=None, nodes_color=None,
+    conn, nodes_data=None, nodes_name=None, nodes_color=None,
     nodes_size=None, nodes_size_min=1, nodes_size_max=10, nodes_cmap='plasma',
     nodes_text=None, nodes_text_offset=1., nodes_text_size=12, edges_min=None,
     edges_max=None, edges_width_min=.5, edges_width_max=6,
     edges_opacity_min=0.1, edges_opacity_max=1., edges_cmap='plasma',
-    cbar=True, cbar_title='Edges', directed=False, angle_start=90,
-    angle_range=360, fig=None, kw_trace={}, kw_cbar={}):
+    categories=None, categories_color=None, cbar=True, cbar_title='Edges',
+    directed=False, angle_start=90, angle_range=360, fig=None, kw_trace={},
+    kw_cbar={}):
     """Network plotting within a circular layout.
 
     Parameters
@@ -26,11 +27,6 @@ def circular(
     nodes_data : pd.DataFrame
         DataFrame that can contains nodes informations (e.g the name of the
         nodes, the x, y and z coordinates, values assign to the nodes etc.)
-    categories : dict, str | None
-        Nodes categories. If a dict is passed, the keys should corresponds
-        to the name of the nodes and the values to the category name.
-        Alternatively, if `nodes_data` is provided, a string referring to a
-        column name can be provided instead
     nodes_name : list, array_like, str | None
         List of names of the nodes. Alternatively, if `nodes_data` is provided,
         a string referring to a column name can be provided instead
@@ -58,10 +54,19 @@ def circular(
         Respectively the minimum and maximum opacity for edges
     edges_cmap : str | 'plasma'
         Colormap to use to infer the color of each edge
+    categories : dict, str | None
+        Nodes categories. If a dict is passed, the keys should corresponds
+        to the name of the nodes and the values to the category name.
+        Alternatively, if `nodes_data` is provided, a string referring to a
+        column name can be provided instead
+    categories_color : dict | None
+        Text color following ctagories name. It should be a dict where the keys
+        refer the the values of the input `categories` and the values the color
+        to use
     cbar : bool | True
         Add a colorbar to the plot.
     cbar_title : str | 'Edges
-        Default colorbar title 
+        Default colorbar title
     directed : bool | False
         Specify if the graph is undirected (False) or directed (True)
     angle_start : float | 90
@@ -168,7 +173,7 @@ def circular(
         showlegend=False, marker=dict(
             sizemode='area', color=df_nodes['color_plt'], sizeref=sizeref,
             size=df_nodes['size_plt'], colorscale=nodes_cmap, opacity=1.
-            ),
+        ),
     )
     fig.add_trace(trace, **kw_trace)
 
@@ -177,11 +182,20 @@ def circular(
     # -------------------------------------------------------------------------
     nodes_text = df_nodes['text']
     for k in range(n_nodes):
+        # rotation offset
         off = np.pi if x_names[k] < 0 else 0.
+
+        # categorical colors
+        if isinstance(categories, dict) and isinstance(categories_color, dict):
+            category = categories[nodes_name[k]]
+            anot_color = categories_color[category]
+        else:
+            anot_color = None
+
         fig.add_annotation(
             x=x_names[k], y=y_names[k], text=nodes_text[k], showarrow=False,
             textangle=np.rad2deg(off - angle[k]),
-            font=dict(size=nodes_text_size), **kw_trace
+            font=dict(size=nodes_text_size, color=anot_color), **kw_trace
             )
 
     # -------------------------------------------------------------------------

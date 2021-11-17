@@ -9,10 +9,11 @@ from netchos.utils import normalize, extract_df_cols, prepare_to_plot
 def network(
     conn, nodes_data=None, nodes_name=None, nodes_x=None, nodes_y=None,
     nodes_z=None, nodes_color=None, nodes_size=None, nodes_size_min=1,
-    nodes_size_max=30, nodes_cmap='plasma', edges_min=None, edges_max=None,
-    edges_width_min=.5, edges_width_max=8, edges_opacity_min=0.1,
-    edges_opacity_max=1., edges_cmap='plasma', cbar=True, cbar_title='Edges',
-    directed=False, fig=None, kw_trace={}, kw_cbar={}):
+    nodes_size_max=30, nodes_cmap='plasma', nodes_text=None, edges_min=None,
+    edges_max=None, edges_width_min=.5, edges_width_max=8,
+    edges_opacity_min=0.1, edges_opacity_max=1., edges_cmap='plasma',
+    cbar=True, cbar_title='Edges', directed=False, fig=None, kw_trace={},
+    kw_cbar={}):
     """Network plotting, either in 2D or 3D.
 
     Parameters
@@ -85,7 +86,7 @@ def network(
     # get useful variables for plotting
     df_nodes, df_edges = prepare_to_plot(
         conn, nodes_size_min=nodes_size_min, nodes_size_max=nodes_size_max,
-        edges_min=edges_min, edges_max=edges_max,
+        nodes_text=nodes_text, edges_min=edges_min, edges_max=edges_max,
         edges_width_min=edges_width_min, edges_width_max=edges_width_max,
         edges_opacity_min=edges_opacity_min,
         edges_opacity_max=edges_opacity_max, directed=directed,
@@ -128,7 +129,7 @@ def network(
     if plt_in == '3D':
         kw_nodes['z'] = list(df_nodes['z'])
     node_trace = Scatter(
-        mode='markers+text', text=list(df_nodes['name']), name='Nodes',
+        mode='markers+text', text=list(df_nodes['text']), name='Nodes',
         textposition="top center", hovertemplate=hovertemplate,
         customdata=customdata, marker=dict(
             showscale=False, colorscale=nodes_cmap, sizemode='area',
